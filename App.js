@@ -22,7 +22,7 @@ export default function App() {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <FormField id='email' label='Email:' value={formValues.email} onChange={handleChange} placeholder='email'/>
-      <FormField id='password' label='Password:' value={formValues.password} onChange={handleChange} placeholder='password'/>
+      <FormField id='password' label='Password:' value={formValues.password} onChange={handleChange} placeholder='password' secure={true}/>
       <FormField id='name' label="Pet's name:" value={formValues.name} onChange={handleChange} placeholder='name'/>
       <FormField id='dob' label='DOB:' value={formValues.dob} onChange={handleChange} placeholder='Month Day, Year'/>
       <FormField id='breed' label='Breed:' value={formValues.breed} onChange={handleChange} placeholder='breed'/>
@@ -31,17 +31,30 @@ export default function App() {
   );
 }
 
-export const FormField = ({ id, label, value, onChange, placeholder}) => (
-  <View>
-    <Text>
+export const FormField = ({ id, label, value, onChange, placeholder, secure = false}) => (
+  <View style={styles.container}>
+    <Text style={styles.text}>
       {label}
     </Text>
-    <Text>
+    {/* <Text>
       {value}
-    </Text>
+    </Text> */}
     <TextInput
       onChangeText={text => onChange(id, text)}
-      placeholder={placeholder}>
+      placeholder={placeholder}
+      secureTextEntry={secure}
+      style={styles.text}>
     </TextInput>
   </View>
 )
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+    alignItems: 'center'
+  },
+  text: {
+    padding: 8,
+    fontSize: 18
+  }
+})
