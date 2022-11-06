@@ -20,14 +20,16 @@ export default function App() {
   }
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <FormField id='email' label='Email:' value={formValues.email} onChange={handleChange} placeholder='email'/>
-      <FormField id='password' label='Password:' value={formValues.password} onChange={handleChange} placeholder='password' secure={true}/>
-      <FormField id='name' label="Pet's name:" value={formValues.name} onChange={handleChange} placeholder='name'/>
-      <FormField id='dob' label='DOB:' value={formValues.dob} onChange={handleChange} placeholder='Month Day, Year'/>
-      <FormField id='breed' label='Breed:' value={formValues.breed} onChange={handleChange} placeholder='breed'/>
-      <FormField id='toy' label='Favorite Toy:' value={formValues.toy} onChange={handleChange} placeholder='toy'/>
-    </View>
+    <ScrollView style={{backgroundColor: '#def2f1'}}>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <FormField id='email' label='Email:' value={formValues.email} onChange={handleChange} placeholder='email'/>
+        <FormField id='password' label='Password:' value={formValues.password} onChange={handleChange} placeholder='password' secure={true}/>
+        <FormField id='name' label="Pet's name:" value={formValues.name} onChange={handleChange} placeholder='name'/>
+        <FormField id='dob' label='DOB:' value={formValues.dob} onChange={handleChange} placeholder='Month Day, Year'/>
+        <FormField id='breed' label='Breed:' value={formValues.breed} onChange={handleChange} placeholder='breed'/>
+        <FormField id='toy' label='Favorite Toy:' value={formValues.toy} onChange={handleChange} placeholder='toy'/>
+      </View>
+    </ScrollView>
   );
 }
 
@@ -36,9 +38,6 @@ export const FormField = ({ id, label, value, onChange, placeholder, secure = fa
     <Text style={styles.text}>
       {label}
     </Text>
-    {/* <Text>
-      {value}
-    </Text> */}
     <TextInput
       onChangeText={text => onChange(id, text)}
       placeholder={placeholder}
@@ -51,7 +50,7 @@ export const FormField = ({ id, label, value, onChange, placeholder, secure = fa
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   text: {
     padding: 8,
