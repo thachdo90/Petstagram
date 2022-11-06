@@ -1,20 +1,31 @@
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Button, TextInput } from 'react-native';
 
 export default function App() {
+  const [name, setName] = useState('');
+  const handleNameChange = (text) => {
+    setName(text);
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <FormField label="Pet's name" value={name} onChange={handleNameChange} placeholder='name'/>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export const FormField = ({ label, value, onChange, placeholder}) => (
+  <View>
+    <Text>
+      {label}
+    </Text>
+    <Text>
+      {value}
+    </Text>
+    <TextInput
+      onChangeText={text => onChange(text)}
+      placeholder={placeholder}>
+    </TextInput>
+  </View>
+)
